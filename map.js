@@ -29,6 +29,8 @@ function createMarker(point) {
   var marker = L.marker(latLng);
   var text = "<b>" + name + "</b>";
 
+  marker.bindTooltip(text);
+
   for (let i = 2; i < point.length - 2; i++) {
     if (point[i]) {
       text += "<br />" + structure[i - 2] + point[i];
@@ -40,7 +42,6 @@ function createMarker(point) {
     text += "<br /> <a href=\"" + point[7] + "\" target=\"_blank\">Wook Canon</a>";
   }
 
-  marker.bindTooltip(text);
   marker.bindPopup(text);
   marker.addTo(map);
 }
