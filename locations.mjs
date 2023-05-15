@@ -23,6 +23,7 @@ const pointsOfInterest = [
   [1234, 734, "Planet", "Nal Hutta", "Y'Toub", , "Hutt Space", "https://starwars.fandom.com/wiki/Nal_Hutta", "Hutta", true],
   [1236, 736, "Moon", "Nar Shaddaa", "Y'Toub", "Hutt Space", "Hutt Space", "https://starwars.fandom.com/wiki/Nar_Shaddaa", "Nar Shaddaa", true],
   [1008, 581, "Planet", "Onderon", "Japrael", "Japrael", "Disputed", "https://starwars.fandom.com/wiki/Onderon", "Onderon", true],
+  [756, 418, "Planet", "Ord Mantell", "Bright Jewel", "Bright Jewel", "Republic", "https://starwars.fandom.com/wiki/Ord_Mantell", "Ord Mantell", true],
   [1230, 375, "Planet", "Ossus", "Adega", "Auril", "Disputed", "https://starwars.fandom.com/wiki/Ossus", "Ossus", true],
   [439, 716, "Planet", "Rakata Prime", "Lehon", , "Independent", "https://starwars.fandom.com/wiki/Rakata_Prime", "Rakata Prime", true],
   [500, 1010, "Planet", "Rattatak", "Guter Wade", "Trilon", "Independent", "https://starwars.fandom.com/wiki/Rattatak  ", "Rattatak", true],
