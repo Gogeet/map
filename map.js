@@ -27,13 +27,18 @@ function pixelToLatLng(pixelCoordinates) {
     return map.unproject(pixelCoordinates, zoom);
   }
 
-//Structure: [x, y, type, Planet, System, Sector, link to WookLegends, link to WookCanon, Name to show]
+//Structure: [x, y, type, Planet, System, Sector, link to WookCanon, Name to show]
 var pointsOfInterest = [
     [779, 690, , , , , , , "Galactic Centre"],
-    [754, 592, "Planet", "Coruscant", "Coruscant", "Corusca", "https://starwars.fandom.com/wiki/Coruscant/Legends", "https://starwars.fandom.com/wiki/Coruscant", "Coruscant"]
+    [754, 592, "Planet", "Coruscant", "Coruscant", "Corusca", "Republic", "https://starwars.fandom.com/wiki/Coruscant", "Coruscant"],
+    [1175, 352, "Planet", "Auratera", "Auratera", "Vorzyd", "Disputed", "https://starwars.fandom.com/wiki/Auratera", "Auratera",],
+    [1230, 375, "Planet", "Ossus", "Adega", "Auril", "Disputed", "https://starwars.fandom.com/wiki/Ossus", "Ossus"],
+    [1175, 276, "Planet", "Korriban", "Horuset", "Esstran", "Empire", "https://starwars.fandom.com/wiki/Korriban", "Korriban"],
+    [1172, 240, "Planet", "Ziost", "Ziost", "Esstran", "Empire", "https://starwars.fandom.com/wiki/Ziost", "Ziost"],
+    [,,,,,,,],
 ]
 
-var structure = ["Body: ", "Name: ", "System: ", "Sector: ", "Wook Legends", "Wook Canon"];
+var structure = ["Body: ", "Name: ", "System: ", "Sector: ", "Allegiance: "];
 
 for(let i = 0; i < pointsOfInterest.length; i++) {
     var pixelCoordinates = [pointsOfInterest[i][0], pointsOfInterest[i][1]];
@@ -45,16 +50,15 @@ for(let i = 0; i < pointsOfInterest.length; i++) {
 
     marker.bindTooltip(text);
 
-    for(let j = 2; j < pointsOfInterest[i].length-3; j++) {
+    for(let j = 2; j < pointsOfInterest[i].length-2; j++) {
         if(pointsOfInterest[i][j] !== undefined) {
             text += "<br />" + structure[j-2] + pointsOfInterest[i][j];
         }
     }
 
-    for(let j = pointsOfInterest[i].length-3; j < pointsOfInterest[i].length-1; j++) {
-        if(pointsOfInterest[i][j] !== undefined) {
-            text += "<br /> <a href=\"" + pointsOfInterest[i][j] + "\" target=\"_blank\">" + structure[j-2] + "</a>";
-        }
+    if(pointsOfInterest[i][7] !== undefined) {
+        text += "<br /> <a href=\"" + pointsOfInterest[i][7] + "\\Legends\" target=\"_blank\">Wook Legends</a>";
+        text += "<br /> <a href=\"" + pointsOfInterest[i][7] + "\" target=\"_blank\">Wook Canon</a>";
     }
 
     marker.bindPopup(text);
