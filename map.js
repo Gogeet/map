@@ -50,7 +50,7 @@ function createMarker(point) {
   marker.addTo(map);
 }
 
-import pointsOfInterest from "./locations.js";
+import pointsOfInterest from "./locations.mjs";
 
 var structure = ["Body: ", "Name: ", "System: ", "Sector: ", "Allegiance: "];
 
