@@ -9,7 +9,7 @@ const pointsOfInterest = [
   [1067, 320, "Moon", "Yavin IV", "Yavin", "Gordian", , "https://starwars.fandom.com/wiki/Yavin_4", "Yavin", true],
   [1196, 262, "Planet", "Dromund Kaas", "Dromund", "Esstran", "Empire", "https://starwars.fandom.com/wiki/Dromund_Kaas", "Dromund Kaas", true],
   [1200, 261, "Planet", "Dromund Fels", "Dromund", "Esstran", "Empire", "https://starwars.fandom.com/wiki/Dromund_Fels", "Dromund Fels", false],
-  [969, 364, "Planet", "Dathomir", "Dathomir", "Quelli", "Independent", "https://starwars.fandom.com/wiki/Dathomir", "Dathomir", true],
+  [969, 346, "Planet", "Dathomir", "Dathomir", "Quelli", "Independent", "https://starwars.fandom.com/wiki/Dathomir", "Dathomir", true],
   [1188, 231, "Planet", "Upekzar", "Upekzar", "Esstran", "Empire", "https://starwars.fandom.com/wiki/Upekzar", "Upekzar", false],
   [1234, 734, "Planet", "Nal Hutta", "Y'Toub", "Hutt Space", "Hutt Space", "https://starwars.fandom.com/wiki/Nal_Hutta", "Hutta", true],
   [1236, 736, "Moon", "Nar Shaddaa", "Y'Toub", "Hutt Space", "Hutt Space", "https://starwars.fandom.com/wiki/Nar_Shaddaa", "Nar Shaddaa", true],
@@ -29,7 +29,16 @@ const pointsOfInterest = [
   [1188, 1055, "Planet", "Tatooine", "Tatoo", "Arkanis", "Independent", "https://starwars.fandom.com/wiki/Tatooine", "Tatooine", true],
   [995, 639, "Planet", "Zeltros", "Zel", , "Republic", "https://starwars.fandom.com/wiki/Zeltros", "Zeltros", true],
   [1003, 407, "Planet", "Mandalore", "Mandalore", "Mandalore", "Independent", "https://starwars.fandom.com/wiki/Mandalore", "Mandalore", true],
-  [939, 395, "Planet", "Taris", "Taris", "Ojoster", "Empire", "https://starwars.fandom.com/wiki/Zeltros", "Taris", true]
+  [939, 395, "Planet", "Taris", "Taris", "Ojoster", "Empire", "https://starwars.fandom.com/wiki/Zeltros", "Taris", true],
+  [972, 690, "Planet", "Manaan", "Pyrshak", , "Independent", "https://starwars.fandom.com/wiki/Manaan", "Manaan", true],
+  [689, 1181, "Planet", "Hoth", "Hoth", "Anoat", "Independent", "https://starwars.fandom.com/wiki/Hoth", "Hoth", true],
+  [782, 1152, "Planet", "Belsavis", "Belsavis", "Bozhnee", "Republic", "https://starwars.fandom.com/wiki/Belsavis", "Belsavis", true],
+  [1246, 948, "Planet", "Rishi", "Rishi", "Abrion", "Independent", "https://starwars.fandom.com/wiki/Rishi", "Rishi", true],
+  [1032, 278, "Planet", "Serenno", "Serenno", "D'Astan", "Empire", "https://starwars.fandom.com/wiki/Serenno  ", "Serenno", true],
+  [777, 471, "Planet", "Yinchorr", "Yinchorri", "Fellwe", "Independent", "https://starwars.fandom.com/wiki/Yinchorr  ", "Yinchorr", true],
+  [983, 1075, "Planet", "Naboo", "Naboo", "Chommell", "Independent", "https://starwars.fandom.com/wiki/Naboo  ", "Naboo", true],
+  [500, 1010, "Planet", "Rattatak", "Guter Wade", "Trilon", "Independent", "https://starwars.fandom.com/wiki/Rattatak  ", "Rattatak", true],
+  [439, 716, "Planet", "Rakata Prime", "Lehon", , "Independent", "https://starwars.fandom.com/wiki/Rakata_Prime  ", "Rakata Prime", true],
 ];
 
 export default pointsOfInterest;
