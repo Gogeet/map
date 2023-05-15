@@ -69,7 +69,7 @@ function createMarker(point) {
 
   if (point[7]) {
     text += '<br />' + (point[9] ? `<a href="${point[7]}\\Legends" target="_blank">Wook Legends</a>` : `<a href="${point[7]}" target="_blank">Wook Legends</a>`);
-    if (!point[9]) {
+    if (point[9]) {
       text += `<br /><a href="${point[7]}" target="_blank">Wook Canon</a>`;
     }
   }
