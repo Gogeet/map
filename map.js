@@ -1,10 +1,10 @@
-var imageUrl = 'map.png',
-    imageBounds = [[-400, -400], [400, 400]];
+var imageUrl = 'map.png';
 
-
-var map = L.map('map').setView([0, 0], 1);
-
-L.imageOverlay(imageUrl, imageBounds).addTo(map);
-
-var marker = L.marker([0, 0]).addTo(map);
-marker.bindPopup('this is a pop-up!').openPopup();
+var viewer = OpenSeadragon({
+  id: 'map',
+  prefixUrl: 'openseadragon/images/',
+  tileSources: imageUrl,
+  defaultZoomLevel: 0,
+  minZoomLevel: 0,
+  maxZoomLevel: 10,
+});
