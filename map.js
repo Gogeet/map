@@ -1,6 +1,6 @@
-var imageUrl = 'map.png';
-var imageWidth = 1600;
-var imageHeight = 1600;
+var imageUrl = 'map_og.png';
+var imageWidth = 1576;
+var imageHeight = 1415;
 
 var map = L.map('map', {
   crs: L.CRS.Simple,
@@ -19,7 +19,7 @@ var imageBounds = L.latLngBounds(southWest, northEast);
 
 L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
-map.setView([-800, 800], 0);
+map.setView([-imageWidth/2, imageHeight/2], 0);
 
 
 function pixelToLatLng(pixelCoordinates) {
@@ -29,8 +29,8 @@ function pixelToLatLng(pixelCoordinates) {
 
 //Structure: [x, y, type, Planet, System, Sector, link to WookLegends, link to WookCanon, Name to show]
 var pointsOfInterest = [
-    [800, 800, , , , , , , "Galactic Centre"],
-    [767, 670, "Planet", "Coruscant", "Coruscant", "Corusca", "https://starwars.fandom.com/wiki/Coruscant/Legends", "https://starwars.fandom.com/wiki/Coruscant", "Coruscant"]
+    [779, 690, , , , , , , "Galactic Centre"],
+    [754, 592, "Planet", "Coruscant", "Coruscant", "Corusca", "https://starwars.fandom.com/wiki/Coruscant/Legends", "https://starwars.fandom.com/wiki/Coruscant", "Coruscant"]
 ]
 
 var structure = ["Body: ", "Name: ", "System: ", "Sector: ", "Wook Legends", "Wook Canon"];
