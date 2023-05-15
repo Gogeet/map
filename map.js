@@ -1,3 +1,11 @@
+const customIcon = L.icon({
+  iconUrl: 'icon.png',
+  iconSize: [15, 15], // set the size of the icon
+  iconAnchor: [6, 15], // set the anchor point of the icon
+  popupAnchor: [0, -4], // set the anchor point for the popup
+  tooltipAnchor: [5, -10]
+});
+
 var imageUrl = 'map_og.png';
 var imageWidth = 1576;
 var imageHeight = 1415;
@@ -26,7 +34,9 @@ function createMarker(point) {
   var [x, y, , , , , , , name] = point;
   var pixelCoordinates = [x, y];
   var latLng = pixelToLatLng(pixelCoordinates);
-  var marker = L.marker(latLng);
+  var marker = L.marker(latLng, {
+    icon: customIcon
+  });
   var text = "<b>" + name + "</b>";
 
   marker.bindTooltip(text);
