@@ -2,10 +2,24 @@ body {
   background-color: #1D0F24;
 }
 
-#map {
+.planet-link {
+  color: #ccc;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#marker-links {
+  margin-top: 20px;
+  width: 60%;
   margin: 0 auto;
+  text-align: center;
+}
+
+#map {
+  margin: 20px auto;
   height: 600px;
-  width: 800px;
+  width: 80%;
   background-color: #12091A;
   border: 5px dashed #ccc;
   border-radius: 10px;
@@ -13,13 +27,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
   #map {
     height: 400px;
     width: 100%;
-    margin: 0;
+    margin: 20px 0;
   }
 }
 
@@ -35,7 +50,7 @@ body {
   font-weight: bold;
   border-radius: 0px;
   text-align: center;
-  padding: 9px 0px 0px 0px !important;
+  padding-top: 9px !important;
 }
 
 .leaflet-control-zoom-in {

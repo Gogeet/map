@@ -1,16 +1,19 @@
 const customIcon = L.icon({
   iconUrl: 'icon.png',
-  iconSize: [15, 15], // set the size of the icon
-  iconAnchor: [6, 15], // set the anchor point of the icon
-  popupAnchor: [0, -4], // set the anchor point for the popup
+  iconSize: [15, 15],
+  iconAnchor: [6, 15],
+  popupAnchor: [0, -4],
   tooltipAnchor: [5, -10]
 });
 
-var imageUrl = 'map_og.png';
-var imageWidth = 1576;
-var imageHeight = 1415;
+const markers = [];
+let markerIndex = 0;
 
-var map = L.map('map', {
+const imageUrl = 'map_og.png';
+const imageWidth = 1576;
+const imageHeight = 1415;
+
+const map = L.map('map', {
   crs: L.CRS.Simple,
   minZoom: -Infinity,
   maxZoom: Infinity,
@@ -18,52 +21,87 @@ var map = L.map('map', {
 });
 
 function pixelToLatLng(pixelCoordinates) {
-  var zoom = map.getZoom();
+  const zoom = map.getZoom();
   return map.unproject(pixelCoordinates, zoom);
 }
 
-var southWest = map.unproject([0, imageHeight]);
-var northEast = map.unproject([imageWidth, 0]);
-var imageBounds = L.latLngBounds(southWest, northEast);
+const southWest = map.unproject([0, imageHeight]);
+const northEast = map.unproject([imageWidth, 0]);
+const imageBounds = L.latLngBounds(southWest, northEast);
 
 L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
 map.setView([-imageWidth / 2, imageHeight / 2], 0);
 
+import pointsOfInterest from './locations.mjs';
+
+const structure = ['Body: ', 'Name: ', 'System: ', 'Sector: ', 'Allegiance: '];
+
 function createMarker(point) {
-  var [x, y, , , , , , , name] = point;
-  var pixelCoordinates = [x, y];
-  var latLng = pixelToLatLng(pixelCoordinates);
-  var marker = L.marker(latLng, {
+  const [x, y, , , , , , , name] = point;
+  const pixelCoordinates = [x, y];
+  const latLng = pixelToLatLng(pixelCoordinates);
+  const marker = L.marker(latLng, {
     icon: customIcon
   });
-  var text = "<b>" + name + "</b>";
 
-  marker.bindTooltip(text);
+  const link = document.createElement('a');
+  link.href = '#';
+  link.textContent = name;
+  link.setAttribute('index', markerIndex);
+  link.classList.add('planet-link');
+  const markerLinks = document.getElementById('marker-links');
+  markerLinks.appendChild(link);
 
+  const span = document.createElement('span');
+  span.textContent = '  |  ';
+  span.classList.add('planet-link');
+  markerLinks.appendChild(span);
+
+  marker.bindTooltip('<b>' + name + '</b>');
+
+  let text = '<b>' + name + '</b>';
   for (let i = 2; i < point.length - 3; i++) {
     if (point[i]) {
-      text += "<br />" + structure[i - 2] + point[i];
+      text += '<br />' + structure[i - 2] + point[i];
     }
   }
 
   if (point[7]) {
-    if(point[9]) {
-      text += "<br /> <a href=\"" + point[7] + "\\Legends\" target=\"_blank\">Wook Legends</a>";
-      text += "<br /> <a href=\"" + point[7] + "\" target=\"_blank\">Wook Canon</a>";
-    } else {
-    text += "<br /> <a href=\"" + point[7] + "\" target=\"_blank\">Wook Legends</a>";
+    text += '<br />' + (point[9] ? `<a href="${point[7]}\\Legends" target="_blank">Wook Legends</a>` : `<a href="${point[7]}" target="_blank">Wook Legends</a>`);
+    if (!point[9]) {
+      text += `<br /><a href="${point[7]}" target="_blank">Wook Canon</a>`;
     }
   }
 
   marker.bindPopup(text);
   marker.addTo(map);
+
+  marker._id = markerIndex;
+  marker.on('click', function() {
+    const markerId = this._id;
+  });
+  markers.push(marker);
+
+  markerIndex++;
 }
 
-import pointsOfInterest from "./locations.mjs";
-
-var structure = ["Body: ", "Name: ", "System: ", "Sector: ", "Allegiance: "];
-
-for (var point of pointsOfInterest) {
+for (const point of pointsOfInterest) {
   createMarker(point);
 }
+
+const links = document.querySelectorAll('#marker-links a');
+links.forEach(function(link) {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    const markerIndex = parseInt(this.getAttribute('index'), 10);
+    markers[markerIndex].unbindTooltip();
+
+    const markerClicked = markers[markerIndex];
+    markerClicked.fire('click');
+
+    setTimeout(function() {
+      markers[markerIndex].bindTooltip();
+    }, 1000);
+  });
+});
